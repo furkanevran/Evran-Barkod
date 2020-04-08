@@ -1,0 +1,29 @@
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\Evran Barkod.exe.config
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\Evran Barkod.exe
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\Evran Barkod.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\ControlzEx.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\MahApps.Metro.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\MahApps.Metro.IconPacks.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\Newtonsoft.Json.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\System.Windows.Interactivity.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\ControlzEx.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\MahApps.Metro.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\MahApps.Metro.xml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\MahApps.Metro.IconPacks.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\MahApps.Metro.IconPacks.xml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Release\Newtonsoft.Json.xml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\MainWindow.baml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\MainWindow.g.cs
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\views\SatisView.g.cs
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\App.g.cs
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\Evran Barkod_MarkupCompile.cache
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\Evran Barkod_MarkupCompile.lref
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\App.baml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\views\SatisView.baml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\Evran Barkod.g.resources
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\Evran_Barkod.Properties.Resources.resources
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\Evran Barkod.csproj.GenerateResource.Cache
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\Evran Barkod.csproj.CoreCompileInputs.cache
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\Evran Barkod.exe
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\Evran Barkod.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Release\Evran Barkod.csprojResolveAssemblyReference.cache

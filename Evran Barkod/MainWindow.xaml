@@ -1,0 +1,329 @@
+﻿<Controls:MetroWindow x:Class="Evran_Barkod.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      mc:Ignorable="d"
+                      
+                      Title="EVRAN BARKOD" Height="600" Width="800">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="ayarlar" />
+            <Button Click="UrunEkle">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Width="24" Height="24" Kind="Barcode" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="ürün ekle" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Grid>
+        <Controls:MetroTabControl Name="tcTabs" SelectionChanged="RefreshRaporTiles">
+            <Controls:MetroTabItem Header="Satış">
+                <ContentControl x:Name="satisContentControl" />
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem Header="Ürün">
+                <Grid>
+                    <Controls:MetroTabControl Name="tcUrun">
+                        <Controls:MetroTabItem Header="Ekle">
+                            <Grid>
+                                <StackPanel Margin="100 50 100 0">
+                                    <TextBox Name="txUrunEkleBarkod" PreviewKeyDown="TextBox_OnlyAcceptNumberic" Margin="0 0 0 10" Controls:TextBoxHelper.AutoWatermark="True" Controls:TextBoxHelper.Watermark="Barkod" Controls:TextBoxHelper.UseFloatingWatermark="True" FontSize="24"/>
+                                    <TextBox Name="txUrunEkleAd" Margin="0 0 0 10" Controls:TextBoxHelper.AutoWatermark="True" Controls:TextBoxHelper.Watermark="Ad" Controls:TextBoxHelper.UseFloatingWatermark="True" FontSize="24"/>
+                                    <TextBox Name="txUrunEkleFiyat"  PreviewKeyDown="TextBox_OnlyAcceptNumbericAndPeriod"  Margin="0 0 0 10" Controls:TextBoxHelper.AutoWatermark="True" Controls:TextBoxHelper.Watermark="Fiyat" Controls:TextBoxHelper.UseFloatingWatermark="True" FontSize="24"/>
+                                    <CheckBox Name="cbUrunEkleBarkodluTerazi" Margin="0 0 0 10" Checked="Urun_Ekle_BarkodluTeraziUrunuStateChanged" Unchecked="Urun_Ekle_BarkodluTeraziUrunuStateChanged" TextBlock.FontSize="18">Barkodlu Terazi Ürünü</CheckBox>
+                                    <CheckBox Name="cbUrunEkleHizli" Margin="0 0 0 10" TextBlock.FontSize="18">Hızlı Satışa Ekle</CheckBox>
+                                    <Controls:Tile Margin="0 20 0 0" Title="Ürün Ekle" Click="Urun_Ekle_UrunEkle">
+                                        <iconPacks:PackIconMaterial Width="80" Height="80" Kind="Barcode" />
+                                    </Controls:Tile>
+                                </StackPanel>
+
+
+
+                            </Grid>
+                        </Controls:MetroTabItem>
+                        <Controls:MetroTabItem Header="Düzenle">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                </Grid.RowDefinitions>
+                                <TextBox Name="txUrunDuzenleAraBarkod" KeyUp="Urun_Duzenle_BarkodAra" MaxHeight="40" Controls:TextBoxHelper.AutoWatermark="True" Controls:TextBoxHelper.UseFloatingWatermark="True" Controls:TextBoxHelper.Watermark="Barkod"></TextBox>
+                                <DataGrid AutoGenerateColumns="False" Name="dgUrunDuzenle" MouseDoubleClick="Urun_Duzenle_DuzenlemeEkrani" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserAddRows="False" Grid.Row="1">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Barkod" Width="2*" Binding="{Binding Barkod, Mode=OneWay}"/>
+                                        <DataGridTextColumn Header="Ad" Width="2*" Binding="{Binding Ad, Mode=OneWay}"/>
+                                        <DataGridTextColumn Header="Fiyat" Width="1*" Binding="{Binding Fiyat, Mode=OneWay}"/>
+                                        <DataGridTextColumn Header="KGFiyat" Width="2*" Binding="{Binding KGFiyat, Mode=OneWay}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Grid Name="gDuzenle" Visibility="Hidden" Grid.RowSpan="2">
+                                    <Button Click="Urun_Duzenle_Geri" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" Margin="20" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                        <iconPacks:PackIconFontAwesome Width="40" Height="40" Kind="ArrowCircleLeftSolid" />
+                                    </Button>
+                                    <StackPanel Margin="100 50 100 0">
+                                        <TextBox Name="txUrunDuzenleBarkod" PreviewKeyDown="TextBox_OnlyAcceptNumberic" Margin="0 0 0 10" Controls:TextBoxHelper.AutoWatermark="True" Controls:TextBoxHelper.Watermark="Barkod" Controls:TextBoxHelper.UseFloatingWatermark="True" FontSize="24"/>
+                                        <TextBox Name="txUrunDuzenleAd" Margin="0 0 0 10" Controls:TextBoxHelper.AutoWatermark="True" Controls:TextBoxHelper.Watermark="Ad" Controls:TextBoxHelper.UseFloatingWatermark="True" FontSize="24"/>
+                                        <TextBox Name="txUrunDuzenleFiyat" PreviewKeyDown="TextBox_OnlyAcceptNumbericAndPeriod"  Margin="0 0 0 10" Controls:TextBoxHelper.AutoWatermark="True" Controls:TextBoxHelper.Watermark="Fiyat" Controls:TextBoxHelper.UseFloatingWatermark="True" FontSize="24"/>
+                                        <CheckBox Name="cbUrunDuzenleBarkodluTerazi" Margin="0 0 0 10" Checked="Urun_Duzenle_BarkodluTeraziUrunuStateChanged" Unchecked="Urun_Duzenle_BarkodluTeraziUrunuStateChanged" TextBlock.FontSize="18">Barkodlu Terazi Ürünü</CheckBox>
+                                        <CheckBox Name="cbUrunDuzenleHizli" Margin="0 0 0 10" TextBlock.FontSize="18">Hızlı Satışa Ekle</CheckBox>
+
+                                        <Controls:Tile Margin="0 20 0 0" Title="Ürün Düzenle" Click="Urun_Duzenle_Duzenle">
+                                            <iconPacks:PackIconMaterial Width="80" Height="80"  Kind="QrcodeEdit" />
+                                        </Controls:Tile>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Controls:MetroTabItem>
+                        <Controls:MetroTabItem Header="Kaldır">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid Name="dgUrunKaldir" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Barkod" Width="2*" Binding="{Binding Barkod, Mode=OneWay}"/>
+                                        <DataGridTextColumn Header="Ad" Width="2*" Binding="{Binding Ad, Mode=OneWay}"/>
+                                        <DataGridTextColumn Header="Fiyat" Width="1*" Binding="{Binding Fiyat, Mode=OneWay}"/>
+                                        <DataGridTextColumn Header="KGFiyat" Width="2*" Binding="{Binding KGFiyat, Mode=OneWay}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button Margin="5" Grid.Column="1" Background="Red" Foreground="White" TextBlock.FontSize="72" Click="Urun_Kaldir_Kaldir">X</Button>
+                            </Grid>
+                        </Controls:MetroTabItem>
+                    </Controls:MetroTabControl>
+                </Grid>
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem Header="Rapor">
+                <Grid>
+                    <Controls:MetroTabControl>
+                        <Controls:MetroTabItem Header="Gün">
+                            <Grid>
+                                <Grid Name="gRaporGun">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid MouseDoubleClick="Rapor_Gun_Ekstra" Name="dgRaporGun" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserAddRows="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Saat" Binding="{Binding Saat, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Satilan Urun Sayisi" Binding="{Binding SatilanUrunSayisi, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Ucret" Binding="{Binding ToplamUcret, Mode=OneWay}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <StackPanel Grid.Column="1">
+                                        <Controls:Tile Margin="10" Title="Satılan Ürün" TextBlock.FontSize="48" Name="tRaporGunSatilan">
+                                            1337
+                                        </Controls:Tile>
+                                        <Controls:Tile Margin="10" Title="Kazanılan ₺" TextBlock.FontSize="36" Name="tRaporGunKazanc">
+                                            1337
+                                        </Controls:Tile>
+
+                                        <Controls:Tile Margin="10" Title="" TextBlock.FontSize="48">
+
+                                        </Controls:Tile>
+                                    </StackPanel>
+
+                                </Grid>
+                                <Grid Name="gRaporGunDetay" Grid.ColumnSpan="2" Visibility="Hidden">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <DataGrid Name="dgRaporGunUrunler" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserAddRows="False" >
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Barkod" Width="2*" Binding="{Binding Barkod, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Ad" Width="2*" Binding="{Binding Ad, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Adet" Width="1*" Binding="{Binding Adet, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Fiyat" Width="2*" Binding="{Binding Fiyat, Mode=OneWay}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <Button Click="Rapor_Gun_Detay_Geri" Opacity="0.4" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" Margin="20 5 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                        <iconPacks:PackIconFontAwesome Width="40" Height="40" Kind="ArrowCircleLeftSolid" />
+                                    </Button>
+                                    <StackPanel Grid.Column="1">
+                                        <Controls:Tile Margin="10" Title="Toplam Ürün" TextBlock.FontSize="48" Name="tRaporGunDetayUrun">
+                                            1337
+                                        </Controls:Tile>
+                                        <Controls:Tile Margin="10" Title="Toplam ₺" TextBlock.FontSize="48" Name="tRaporGunDetayToplam">
+                                            1337
+                                        </Controls:Tile>
+                                        <Controls:Tile Margin="10" TextBlock.FontSize="48">
+
+                                        </Controls:Tile>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Controls:MetroTabItem>
+                        <Controls:MetroTabItem Header="Ay">
+                            <Grid>
+                                <Grid Name="gRaporAy">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid MouseDoubleClick="Rapor_Ay_Ekstra" Name="dgRaporAy" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserAddRows="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Tarih" Binding="{Binding TarihT, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Satilan Urun Sayisi" Binding="{Binding SatilanUrunSayisi, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Ucret" Binding="{Binding ToplamUcret, Mode=OneWay}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <StackPanel Grid.Column="1">
+                                        <Controls:Tile Margin="10" Title="Satılan Ürün" TextBlock.FontSize="48" Name="tRaporAySatilan">
+                                            1337
+                                        </Controls:Tile>
+                                        <Controls:Tile Margin="10" Title="Kazanılan ₺" TextBlock.FontSize="36" Name="tRaporAyKazanc">
+                                            1337
+                                        </Controls:Tile>
+
+                                        <Controls:Tile Margin="10" Title="" TextBlock.FontSize="48">
+
+                                        </Controls:Tile>
+                                    </StackPanel>
+
+                                </Grid>
+                                <Grid Name="gRaporAyDetay" Grid.ColumnSpan="2" Visibility="Hidden">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <DataGrid Name="dgRaporAyUrunler" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserAddRows="False" >
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Barkod" Width="2*" Binding="{Binding Barkod, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Ad" Width="2*" Binding="{Binding Ad, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Adet" Width="1*" Binding="{Binding Adet, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Fiyat" Width="2*" Binding="{Binding Fiyat, Mode=OneWay}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <Button Click="Rapor_Ay_Geri" Opacity="0.4" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" Margin="20 5 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                        <iconPacks:PackIconFontAwesome Width="40" Height="40" Kind="ArrowCircleLeftSolid" />
+                                    </Button>
+                                    <StackPanel Grid.Column="1">
+                                        <Controls:Tile Margin="10" Title="Toplam Ürün" TextBlock.FontSize="48" Name="tRaporAyDetayUrun">
+                                            1337
+                                        </Controls:Tile>
+                                        <Controls:Tile Margin="10" Title="Toplam ₺" TextBlock.FontSize="48" Name="tRaporAyDetayToplam">
+                                            1337
+                                        </Controls:Tile>
+                                        <Controls:Tile Margin="10" TextBlock.FontSize="48">
+
+                                        </Controls:Tile>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+
+                        </Controls:MetroTabItem>
+                        <Controls:MetroTabItem Header="Seçim">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="12*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <DatePicker Margin="5" Name="dpRaporSecimBaslangic" SelectedDateChanged="Rapor_Secim_Baslangic_Secildi"></DatePicker>
+                                <DatePicker Margin="5" Grid.Column="1" Name="dpRaporSecimSon" SelectedDateChanged="Rapor_Secim_Son_Secildi"></DatePicker>
+                                <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,-30">
+                                    <Grid Name="gRaporSecim" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <DataGrid MouseDoubleClick="Rapor_Secim_Ekstra" Name="dgRaporSecim" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserAddRows="False">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Tarih" Binding="{Binding TarihT, Mode=OneWay}"/>
+                                                <DataGridTextColumn Header="Satilan Urun Sayisi" Binding="{Binding SatilanUrunSayisi, Mode=OneWay}"/>
+                                                <DataGridTextColumn Header="Ucret" Binding="{Binding ToplamUcret, Mode=OneWay}"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                        <StackPanel Grid.Column="1">
+                                            <Controls:Tile Margin="10" Title="Satılan Ürün" TextBlock.FontSize="48" Name="tRaporSecimSatilan">
+                                                1337
+                                            </Controls:Tile>
+                                            <Controls:Tile Margin="10" Title="Kazanılan ₺" TextBlock.FontSize="36" Name="tRaporSecimKazanc">
+                                                1337
+                                            </Controls:Tile>
+
+                                            <Controls:Tile Margin="10" Title="" TextBlock.FontSize="48">
+
+                                            </Controls:Tile>
+                                        </StackPanel>
+
+                                    </Grid>
+                                    <Grid Name="gRaporSecimDetay" Grid.ColumnSpan="2" Grid.Row="1" Visibility="Hidden">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <DataGrid Name="dgRaporSecimUrunler" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserAddRows="False" >
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Barkod" Width="2*" Binding="{Binding Barkod, Mode=OneWay}"/>
+                                                <DataGridTextColumn Header="Ad" Width="2*" Binding="{Binding Ad, Mode=OneWay}"/>
+                                                <DataGridTextColumn Header="Adet" Width="1*" Binding="{Binding Adet, Mode=OneWay}"/>
+                                                <DataGridTextColumn Header="Fiyat" Width="2*" Binding="{Binding Fiyat, Mode=OneWay}"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                        <Button Click="Rapor_Secim_Geri" Opacity="0.4" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" Margin="20 5 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                            <iconPacks:PackIconFontAwesome Width="40" Height="40" Kind="ArrowCircleLeftSolid" />
+                                        </Button>
+                                        <StackPanel Grid.Column="1">
+                                            <Controls:Tile Margin="10" Title="Toplam Ürün" TextBlock.FontSize="48" Name="tRaporSecimDetayUrun">
+                                                1337
+                                            </Controls:Tile>
+                                            <Controls:Tile Margin="10" Title="Toplam ₺" TextBlock.FontSize="48" Name="tRaporSecimDetayToplam">
+                                                1337
+                                            </Controls:Tile>
+                                            <Controls:Tile Margin="10" TextBlock.FontSize="48">
+
+                                            </Controls:Tile>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Controls:MetroTabItem>
+                        <!--<Controls:MetroTabItem Header="Ürün">
+                            <DataGrid Name="dgRaporUrun" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserAddRows="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Ürün" Binding="{Binding Ad, Mode=OneWay}"/>
+                                    <DataGridTextColumn Header="Satilan Urun Sayisi" Binding="{Binding SatilanUrunSayisi, Mode=OneWay}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Controls:MetroTabItem>-->
+                        <Controls:MetroTabItem Header="İstatistikler">
+                            <WrapPanel Margin="5" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <Controls:Tile Title="Gün Rekoru" TextBlock.FontSize="24" Name="tRaporIstatistikGunRekor"></Controls:Tile>
+                                <Controls:Tile Title="Kayıtlı Ürün" TextBlock.FontSize="24" Name="tRaporIstatistikKayitliUrun"></Controls:Tile>
+                                <Controls:Tile Title="Satış Sayısı" TextBlock.FontSize="24" Name="tRaporIstatistikSatisSayisi"></Controls:Tile>
+
+                                <Controls:Tile ></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                                <Controls:Tile Title="" TextBlock.FontSize="24"></Controls:Tile>
+                            </WrapPanel>
+                        </Controls:MetroTabItem>
+                    </Controls:MetroTabControl>
+                </Grid>
+            </Controls:MetroTabItem>
+            <Controls:MetroTabItem HorizontalAlignment="Right" Header="Ayarlar" Visibility="Hidden"></Controls:MetroTabItem>
+        </Controls:MetroTabControl>
+    </Grid>
+</Controls:MetroWindow>

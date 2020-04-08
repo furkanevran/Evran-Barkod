@@ -1,0 +1,29 @@
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\Evran Barkod.exe.config
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\Evran Barkod.exe
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\Evran Barkod.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\Evran Barkod.csprojResolveAssemblyReference.cache
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\MainWindow.g.cs
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\App.g.cs
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\Evran Barkod_MarkupCompile.cache
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\Evran Barkod_MarkupCompile.lref
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\MainWindow.baml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\Evran Barkod.g.resources
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\Evran_Barkod.Properties.Resources.resources
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\Evran Barkod.csproj.GenerateResource.Cache
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\Evran Barkod.csproj.CoreCompileInputs.cache
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\Evran Barkod.exe
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\Evran Barkod.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\ControlzEx.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\MahApps.Metro.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\ControlzEx.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\MahApps.Metro.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\MahApps.Metro.xml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\App.baml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\MahApps.Metro.IconPacks.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\MahApps.Metro.IconPacks.pdb
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\MahApps.Metro.IconPacks.xml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\views\SatisView.g.cs
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\obj\Debug\views\SatisView.baml
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\Newtonsoft.Json.dll
+C:\Users\furka\source\repos\Evran Barkod\Evran Barkod\bin\Debug\Newtonsoft.Json.xml
